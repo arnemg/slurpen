@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Liste over kameras</title>
+        <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+        <link href="/styles.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <h1>Liste over kamera og status</h1>
+        <div id="todo-table">
+            <form>
+                <input type="text" name="input" placeholder="Skriv inn navn" />
+                <button type="submit">Registrer</button>
+            </form>
+            <ul>
+                <% for(var i=0; i < kameras.length; i++){ %>
+                    <li><%= kameras[i].kamera %></li>
+                 <% } %>
+
+            </ul>
+        </div>
+    </body>
+</html>
