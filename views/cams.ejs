@@ -1,19 +1,20 @@
 <html>
     <head>
-        <title>Liste over kameras</title>
-        <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
-        <link href="/styles.css" rel="stylesheet" type="text/css" />
+      <title>Liste over kameras</title>
+      <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+      <script src="/todo.js"></script>
+      <link href="/styles.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>Liste over kamera og status</h1>
         <div id="todo-table">
-            <form>
-                <input type="text" name="input" placeholder="Skriv inn navn" />
+            <form method="POST">
+                <input type="text" name="kamera" placeholder="Skriv inn navn" />
                 <button type="submit">Registrer</button>
             </form>
             <ul>
                 <% for(var i=0; i < kameras.length; i++){ %>
-                    <li><%= kameras[i].kamera %></li>
+                    <li><%= kameras[i].kameranavn %></li>
                  <% } %>
 
             </ul>

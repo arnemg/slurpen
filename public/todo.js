@@ -3,27 +3,25 @@ $(document).ready(function(){
   $('form').on('submit', function(){
 
       var item = $('form input');
-      var nyttKamera = {kamera: item.val()};
+      var nyttkamera = {kameranavn: item.val().trim()};
 
       $.ajax({
         type: 'POST',
         url: '/cams',
-        data: nyttKamera,
+        data: nyttkamera,
         success: function(data){
           //do something with the data via front-end framework
           location.reload();
         }
       });
-
       return false;
-
   });
 
   $('li').on('click', function(){
-      var item = $(this).text().replace(/ /g, "-");
+      var kameranavn = $(this).text().trim().replace(/ /g, "-");
       $.ajax({
         type: 'DELETE',
-        url: '/todo/' + item,
+        url: '/cams/' + kameranavn,
         success: function(data){
           //do something with the data via front-end framework
           location.reload();
