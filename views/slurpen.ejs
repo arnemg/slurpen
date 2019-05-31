@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+ <% include partials/head %>
+</head>
+<body>
+<% include partials/menu %>
+<div class="container-fluid bg-3 text-center">
+  <h2><%= page %></h2><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <p><h3>Slurpen</h3></p>
+      <p>Bydelshuset over alle bydelshus.</p>
+    </div>
+    <div class="col-sm-4">
+        <p><h3>Miljøhuset</h3></p>
+      <p>I Sofienbergparken er det anlagt et miljøhus, der målet er å inspirere til urbane landbruksaktiviteter i Oslo</p>
+    </div>
+    <div class="col-sm-4">
+      <p><h3>Timelape Kamera</h3></p>
+      <p>Her kan du sett opp timelapse jobber på forksjellige lokasjoner.  </p>
+      <a href="http://localhost:4000/cams">Registrere et nytt timelapsekamera</a>
+    </div>
+  </div>
+</div>
+</body>
+<% include partials/script %>
+</html>

@@ -7,15 +7,15 @@ var app = express();
 //set up EJS view-engine
 app.set('view engine', 'ejs');
 
-
 //Handling static file requests
 app.use(express.static('./public'));
-
 
 //Fire camsController
 camsController(app);
 
-//Lytt til en port
-app.listen(3000);
-console.log('Du lytter for tiden til port 3000');
 
+//listen for request (sette opp webserveren)
+app.listen(process.env.port || 4000, function(){
+    //process.env.port -- port ligger i environment. Hvis nødvendig
+    console.log("Du lytter for tiden på port 4000");
+  });
