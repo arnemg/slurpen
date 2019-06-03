@@ -1,11 +1,13 @@
 <html>
     <head>
       <title>Liste over kameras</title>
+      <% include partials/head %>
       <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
       <script src="/todo.js"></script>
-      <link href="/styles.css" rel="stylesheet" type="text/css" />
+   
     </head>
     <body>
+        <% include partials/menu %>
         <h1>Liste over kamera og status</h1>
         <div id="todo-table">
             <form method="POST">
@@ -13,11 +15,13 @@
                 <button type="submit">Registrer</button>
             </form>
             <ul>
+                <div class="col-sm-4">
                 <% for(var i=0; i < kameras.length; i++){ %>
                     <li><%= kameras[i].kameranavn %></li>
                  <% } %>
 
             </ul>
+                </div>
         </div>
     </body>
 </html>
