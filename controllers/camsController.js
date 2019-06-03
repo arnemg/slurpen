@@ -3,14 +3,16 @@ var urlEncodedParser = bodyParser.urlencoded({extended: false});
 
 module.exports = function(app){
 
-var data = [{kameranavn: "PiCam"}, {kameranavn: "Usb 30fps"},
-            {kameranavn: "Nikon FM"}];
+var data = [{kameranavn: "PiCam", lokasjon: "Sofienbergparken Øst", aktiv: "Nei"}, 
+            {kameranavn: "Usb 30fps", lokasjon: "Slurpen 2. etg mot lekeplass", aktiv: "Ja"}, 
+            {kameranavn: "Nikon FM", lokasjon: "Botanisk Hage NordVestlig", aktiv: "Nei"} ];
 
 // ---------------------------------------------------------------GET /
 app.get('/', function(req, res){
   console.log('Er inne i GET / - index.ejs')
   res.render('index', {error: false});
 });
+
 
 // ---------------------------------------------------------------GET /slurpen
 app.get('/slurpen', function(req, res){

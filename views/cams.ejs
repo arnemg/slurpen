@@ -10,14 +10,10 @@
         <% include partials/menu %>
         <h1>Liste over kamera og status</h1>
         <div id="todo-table">
-            <form method="POST">
-                <input type="text" name="kamera" placeholder="Skriv inn navn" />
-                <button type="submit">Registrer</button>
-            </form>
-            <ul>
                 <div class="col-sm-4">
                 <% for(var i=0; i < kameras.length; i++){ %>
-                    <li><%= kameras[i].kameranavn %></li>
+                    <li><%= kameras[i].kameranavn %> </li>
+                    <li><%= kameras[i].loaksjon %></li>
                  <% } %>
 
             </ul>
