@@ -9,14 +9,21 @@ var data = [{kameranavn: "PiCam"}, {kameranavn: "Usb 30fps"},
 // ---------------------------------------------------------------GET /
 app.get('/', function(req, res){
   console.log('Er inne i GET / - index.ejs')
-  res.render('index');
+  res.render('index', {error: false});
 });
 
 // ---------------------------------------------------------------GET /slurpen
 app.get('/slurpen', function(req, res){
   console.log("Er inne i GET /slurpen");
   //kameras overføres til EJS filen og benyttes til å liste opp og hente ut data
-  res.render('slurpen');
+  res.render('slurpen', {kameras: data});
+});
+
+// ---------------------------------------------------------------GET /livevideo
+app.get('/livevideo', function(req, res){
+  console.log("Er inne i GET /livevideo");
+  //kameras overføres til EJS filen og benyttes til å liste opp og hente ut data
+  res.render('livevideo', {error: false});
 });
 
 

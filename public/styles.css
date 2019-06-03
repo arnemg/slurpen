@@ -1,29 +1,8 @@
-body{
-    background: #0d1521;
-    font-family: tahoma;
-    color: #989898;
-}
-
-#todo-table{
-    position: relative;
-    width: 95%;
-    background: #090d13;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-#todo-table form:after{
-    margin: 0;
-    content: '';
-    display: block;
-    clear: both;
-}
 
 input[type="text"]{
     width: 70%;
     padding: 20px;
-    background:#181c22;
+    background:##1abc9c;
     border: 0;
     float: left;
     font-size: 20px;
@@ -60,7 +39,7 @@ li{
 
 li:hover{
     text-decoration: line-through;
-    background: rgba(0,0,0,0.2);
+    background: #1abc9c;
 }
 
 
@@ -82,9 +61,10 @@ li:hover{
     letter-spacing: 5px;
 }
 .navbar-nav  li a:hover {
-    color: #1abc9c !important;
+    color: #000a08 !important;
 }
 
 .active>a {
-  color: #1abc9c !important;;
+  color: #1abc9c !important;
+  opacity: 90;;
 }
