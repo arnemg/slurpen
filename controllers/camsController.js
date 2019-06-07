@@ -3,9 +3,9 @@ var urlEncodedParser = bodyParser.urlencoded({extended: false});
 
 module.exports = function(app){
 
-var data = [{kameranavn: "PiCam", lokasjon: "Sofienbergparken Øst", aktiv: "false"}, 
-            {kameranavn: "Usb 30fps", lokasjon: "Slurpen 2. etg mot lekeplass", aktiv: "true"}, 
-            {kameranavn: "Nikon FM", lokasjon: "Botanisk Hage NordVestlig", aktiv: "false"} ];
+var data = [{kameranavn: "Fugletitteren", lokasjon: "Vinduskarmen", aktiv: "LIVE"}, 
+            {kameranavn: "Slottenga", lokasjon: "Miljøhuset", aktiv: "LIVE"}, 
+            {kameranavn: "TrafikkSikke", lokasjon: "Carl Berner Krysset", aktiv: "N/A"} ];
 
 // ---------------------------------------------------------------GET /
 app.get('/', function(req, res){

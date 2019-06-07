@@ -12,9 +12,8 @@
         <div id="todo-table">
                 <div class="col-sm-4">
                 <% for(var i=0; i < kameras.length; i++){ %>
-                    <li><%= kameras[i].kameranavn %> </li>
-                    <li><%= kameras[i].lokasjon %></li>
-                    <li><%= kameras[i].aktiv %></li>
+                    <li><%= kameras[i].kameranavn %> </li>                        
+                    <p>Plassering <%= kameras[i].lokasjon %> og tilstand <%= kameras[i].aktiv %></p>
                  <% } %>
 
             </ul>
