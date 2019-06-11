@@ -28,11 +28,31 @@ module.exports = function(app){
     res.render('index', {error: false});
   });
 
-  app.get('/cams', function(req, res){    
-    Kamera.find({}, function(err, data){
-      if (err) throw err;
-      console.log("cams fra db --> " + data);
-      res.render('cams', {kameras: data});
+
+
+  // ---------------------------------------------------------------GET /cams
+    app.get('/cams', function(req, res){    
+      Kamera.find({}, function(err, data){
+        if (err) throw err;
+        console.log("cams fra db --> " + JSON.stringify(data));
+        res.render('cams', {kameras: data});
+      });
+    });
+
+   // ---------------------------------------------------------------GET /regCam
+   app.get('/regCam', function(req, res){
+    
+    res.render('regCam', {error: false});
+  });
+ 
+  // ---------------------------------------------------------------POST /regCam
+    app.post('/regCam', urlEncodedParser, function(req, res){
+    console.log("POST /regCam req.body --> " + JSON.stringify(req.body)); 
+       
+    var newKamera = Kamera(req.body).save(function(err, data){
+      if(err) throw err;
+      //res.json(data);
+      res.render('index', {error: false});
     });
   });
 

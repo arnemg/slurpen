@@ -1,13 +1,11 @@
 $(document).ready(function(){
 
   $('form').on('submit', function(){
-
       var item = $('form input');
-      var nyttkamera = {kameranavn: item.val().trim()};
-
+      var nyttkamera = {kameranavn: kameranavn.val().trim()};
       $.ajax({
         type: 'POST',
-        url: '/cams',
+        url: '/regCam',
         data: nyttkamera,
         success: function(data){
           //do something with the data via front-end framework

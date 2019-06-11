@@ -4,13 +4,16 @@
 </head>
 <body>
 <% include partials/menu %>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<script src="/todo.js"></script>
+
 
         <h1>Slurpen bydelshus - Registrer et kamera for timelapse</h1>
         <div id="todo-table">
             <form method="POST">
                 <input type="text" name="kameranavn" placeholder="Skriv inn navn" />
                 <input type="text" name="lokasjon" placeholder="Skriv inn lokasjonrs" />
-                <input type="hidden" name="aktiv" value="LIVE" />
+                <input type="hidden" name="aktiv" value="true" />
                 <button type="submit">Registrer</button>
             </form>    
         </div>
