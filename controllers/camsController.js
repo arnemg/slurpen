@@ -1,63 +1,41 @@
 var bodyParser = require('body-parser');
 var urlEncodedParser = bodyParser.urlencoded({extended: false});
 
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/slurpen');
+
+mongoose.connection.once('open', function(){
+  console.log("Knyttet til DB");
+}).on('error', function(error){
+    console.log('Noe har skjedd i DB connect --> ' + error)
+});
+
+//Et Schema for records
+var kameraSchema = new mongoose.Schema({
+    kameranavn: String,
+    lokasjon: String,
+    aktiv: Boolean
+});
+
+//En Model som baseres på Schema
+var Kamera = mongoose.model('Webcams', kameraSchema);
+
+
 module.exports = function(app){
-
-var data = [{kameranavn: "Fugletitteren", lokasjon: "Vinduskarmen", aktiv: "LIVE"}, 
-            {kameranavn: "Slottenga", lokasjon: "Miljøhuset", aktiv: "LIVE"}, 
-            {kameranavn: "TrafikkSikke", lokasjon: "Carl Berner Krysset", aktiv: "N/A"} ];
-
-// ---------------------------------------------------------------GET /
-app.get('/', function(req, res){
-  console.log('Er inne i GET / - index.ejs')
-  res.render('index', {error: false});
-});
-
-
-// ---------------------------------------------------------------GET /regCam
-app.get('/regCam', function(req, res){
-  console.log("Er inne i GET /regCam");
-  //kameras overføres til EJS filen og benyttes til å liste opp og hente ut data
-  res.render('regCam', {kameras: data});
-});
-
-
-// ---------------------------------------------------------------POST /regCam
-app.post('/regCam', urlEncodedParser, function(req, res){
-  data.push(req.body);
-  //res.json({kamera: data});
-  res.render('cams', {kameras: data});
-  console.log("Er i POST /cams req.body --> " + JSON.stringify(req.body));
-});
-
-
-// ---------------------------------------------------------------GET /livevideo
-app.get('/livevideo', function(req, res){
-  console.log("Er inne i GET /livevideo");
-  //kameras overføres til EJS filen og benyttes til å liste opp og hente ut data
-  res.render('livevideo', {error: false});
-});
-
-
-// ---------------------------------------------------------------GET /cams
-app.get('/cams', function(req, res){
-  console.log("Er inne i GET /cams");
-  //kameras overføres til EJS filen og benyttes til å liste opp og hente ut data
-  res.render('cams', {kameras: data});
-});
-
-// ---------------------------------------------------------------DELETE /cams
-app.delete('/cams/:kameranavn', function(req, res){
-  console.log("inne i DELETE param " + req.params.kameranavn);
-  data = data.filter(function(kamera){
-    return kamera.kameranavn.replace(/ /g, '-') !== req.params.kameranavn;
+  // ---------------------------------------------------------------GET /
+  app.get('/', function(req, res){
+    
+    res.render('index', {error: false});
   });
-  res.render('cams', {kameras: data});
-  
 
-});
+  app.get('/cams', function(req, res){    
+    Kamera.find({}, function(err, data){
+      if (err) throw err;
+      console.log("cams fra db --> " + data);
+      res.render('cams', {kameras: data});
+    });
+  });
+
+}; //module.exports
 
 
-
-
-};
