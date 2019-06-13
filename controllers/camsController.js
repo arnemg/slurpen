@@ -28,13 +28,17 @@ module.exports = function(app){
     res.render('index', {error: false});
   });
 
-
+  // ---------------------------------------------------------------GET /livevideo
+  app.get('/livevideo', function(req, res){
+    
+    res.render('livevideo', {error: false});
+  });
 
   // ---------------------------------------------------------------GET /cams
     app.get('/cams', function(req, res){    
       Kamera.find({}, function(err, data){
         if (err) throw err;
-        console.log("cams fra db --> " + JSON.stringify(data));
+        //console.log("cams fra db --> " + JSON.stringify(data));
         res.render('cams', {kameras: data});
       });
     });
@@ -47,14 +51,11 @@ module.exports = function(app){
  
   // ---------------------------------------------------------------POST /regCam
     app.post('/regCam', urlEncodedParser, function(req, res){
-    console.log("POST /regCam req.body --> " + JSON.stringify(req.body)); 
-       
-    var newKamera = Kamera(req.body).save(function(err, data){
-      if(err) throw err;
-      //res.json(data);
-      res.render('index', {error: false});
+      var newKamera = Kamera(req.body).save(function(err, data){
+        if(err) throw err;
+        res.render('index', {error: false});
+      });
     });
-  });
 
 }; //module.exports
 
