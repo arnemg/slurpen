@@ -8,18 +8,24 @@
     <body>
         <% include partials/menu %>
         <h1>Liste over <%= kameras.length %>  kamera og deres status</h1>
-        <div id="todo-table">
-                <div class="col-sm-4">
+        <table>                
+            <tr>
+                <th>Navn</th>
+                <th>Sted</th>
+                <th>Bildet</th>
+            </tr>
+           
                 <% for(var i=0; i < kameras.length; i++){ %>
-                    <li><%= kameras[i].kameranavn %> </li>                        
-                     <p>Plassering <b><%= kameras[i].lokasjon %> </b> og tilstand <%= kameras[i].aktiv %></p>
-                    <% if(kameras[i].aktiv){ %>
-                        <iframe width="320" height="240" src="http://192.168.0.101:8080/stream" frameborder="0" ></iframe>
-                        <% }
-                  } %>
-                    
-            </ul>
-                </div>
-        </div>
+                <tr>
+                    <td> <%= kameras[i].kameranavn %> </td>                       
+                    <td>Plassering <b><%= kameras[i].lokasjon %></td>
+                    <td>
+                        <% if(kameras[i].aktiv){ %>
+                            <iframe width="320" height="240" src=" <%= kameras[i].stream %> "" frameborder="0" ></iframe>
+                            <% }
+                    } %>
+                    </td>
+                </tr>   
+        </table>
     </body>
 </html>

@@ -14,6 +14,7 @@ mongoose.connection.once('open', function(){
 var kameraSchema = new mongoose.Schema({
     kameranavn: String,
     lokasjon: String,
+    stream: String,
     aktiv: Boolean
 });
 
