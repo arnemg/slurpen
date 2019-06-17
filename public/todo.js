@@ -16,12 +16,15 @@ $(document).ready(function(){
   });
 
   $('li').on('click', function(){
-      var kameranavn = $(this).text().trim().replace(/ /g, "-");
+      var item = $('form input');
+      var kameranavn = {kameranavn: kameranavn.val().trim()};
+
       $.ajax({
-        type: 'DELETE',
-        url: '/cams/' + kameranavn,
+        type: 'GET',
+        url: '/cam/' + kameranavn,
+        data: kameranavn,
         success: function(data){
-          //do something with the data via front-end framework
+          //do something with the data via front-end framework          
           location.reload();
         }
       });

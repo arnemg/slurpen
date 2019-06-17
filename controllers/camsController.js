@@ -23,6 +23,7 @@ var Kamera = mongoose.model('Webcams', kameraSchema);
 
 
 module.exports = function(app){
+
   // ---------------------------------------------------------------GET /
   app.get('/', function(req, res){
     
@@ -35,7 +36,8 @@ module.exports = function(app){
     res.render('livevideo', {error: false});
   });
 
-  // ---------------------------------------------------------------GET /cams
+
+  // ---------------------------------------------------------------GET /cams - LISTE kameras
     app.get('/cams', function(req, res){    
       Kamera.find({}, function(err, data){
         if (err) throw err;

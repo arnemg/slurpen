@@ -7,18 +7,19 @@
     </head>
     <body>
         <% include partials/menu %>
-        <h1>Liste over <%= kameras.length %>  kamera og deres status</h1>
+        <h2>Liste over <%= kameras.length %>  kamera og deres status</h2><br>
         <table>                
-            <tr>
+            <tr><p> <h3>
                 <th>Navn</th>
                 <th>Sted</th>
-                <th>Bildet</th>
+                </h3></p>
             </tr>
            
                 <% for(var i=0; i < kameras.length; i++){ %>
                 <tr>
-                    <td> <%= kameras[i].kameranavn %> </td>                       
-                    <td>Plassering <b><%= kameras[i].lokasjon %></td>
+                    <td><p> <h3><a href="http://localhost:4000/<%= kameras[i].kameranavn %>">  <%= kameras[i].kameranavn %></a></h3><br>    
+                                
+                    Plassering <b><%= kameras[i].lokasjon %></td></p>
                     <td>
                         <% if(kameras[i].aktiv){ %>
                             <iframe width="320" height="240" src=" <%= kameras[i].stream %> "" frameborder="0" ></iframe>
