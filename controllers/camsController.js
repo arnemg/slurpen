@@ -30,6 +30,18 @@ module.exports = function(app){
     res.render('index', {error: false});
   });
 
+    // ---------------------------------------------------------------GET /cam - ETT kamera
+    app.get('/cam/:kameranavn', function(req, res){
+      console.log("/cam --> data inn : " + data);
+      Kamera.find({data}, function(err, data){
+        if (err) throw err;
+        //console.log("cams fra db --> " + JSON.stringify(data));
+        res.render('cams', {kameranavn: data});
+      });
+    
+      res.render('index', {error: false});
+    });
+
   // ---------------------------------------------------------------GET /livevideo
   app.get('/livevideo', function(req, res){
     
