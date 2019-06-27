@@ -2,7 +2,7 @@ var bodyParser = require('body-parser');
 var urlEncodedParser = bodyParser.urlencoded({extended: false});
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/slurpen');
+mongoose.connect('mongodb://arnemg:jalla900@mint_iot_hub:27017/slurpen');
 
 mongoose.connection.once('open', function(){
   console.log("Knyttet til DB");
