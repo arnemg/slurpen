@@ -29,31 +29,30 @@ module.exports = function(app){
     
     res.render('index', {error: false});
   });
+ // ---------------------------------------------------------------GET /livevideo
+ app.get('/livevideo', function(req, res){
+    
+  res.render('livevideo', {error: false});
+});
+
 
     // ---------------------------------------------------------------GET /cam - ETT kamera
     app.get('/cam/:kameranavn', function(req, res){
-      console.log("/cam --> data inn : " + data);
-      Kamera.find({data}, function(err, data){
+      var navn = req.params.kameranavn;            
+      Kamera.findOne({kameranavn: navn}, function(err, data){
         if (err) throw err;
-        //console.log("cams fra db --> " + JSON.stringify(data));
-        res.render('cams', {kameranavn: data});
+              
+        res.render('cam', {kamera: data});
       });
-    
-      res.render('index', {error: false});
+      
     });
 
-  // ---------------------------------------------------------------GET /livevideo
-  app.get('/livevideo', function(req, res){
-    
-    res.render('livevideo', {error: false});
-  });
-
-
+ 
   // ---------------------------------------------------------------GET /cams - LISTE kameras
     app.get('/cams', function(req, res){    
       Kamera.find({}, function(err, data){
-        if (err) throw err;
-        //console.log("cams fra db --> " + JSON.stringify(data));
+        if (err) 
+          throw err;    
         res.render('cams', {kameras: data});
       });
     });

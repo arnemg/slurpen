@@ -1,13 +1,15 @@
 <html>
     <head>
-      <title>Liste over kameras</title>
+      <title>Informasjon kamera</title>
       <% include partials/head %>
       <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
       <script src="/todo.js"></script>   
     </head>
     <body>
         <% include partials/menu %>
-        <h2>DETTE ER KAMERASIDE  </h2><br>
+        <h2>DETTE ER KAMERASIDE  for <%= kamera.kameranavn %></h2><br>
+        <p> Dette kamera befinner seg <b></b><%= kamera.lokasjon %></b> og bildet vises under </p>
+        <iframe width="720" height="480" src=" <%= kamera.stream %> "" frameborder="0" ></iframe>
    
     </body>
 </html>
